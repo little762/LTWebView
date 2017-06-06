@@ -2,6 +2,7 @@ package com.lt.library.view;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
@@ -53,12 +54,16 @@ public class LTWebView extends LinearLayout {
         init(context, attrs);
     }
 
+    private final int default_reached_color = Color.rgb(255, 0, 0);
     private void init(Context context, AttributeSet attrs) {
         setOrientation(LinearLayout.VERTICAL);
 
         // 初始化mProgressBar
         if (mProgressBar == null){
             mProgressBar = new NumberProgressBar(context,attrs);
+            mProgressBar.setProgressTextSize(0);
+            mProgressBar.setReachedBarColor(default_reached_color);
+            mProgressBar.setReachedBarHeight(mProgressBar.dp2px(2.5f));
             mProgressBar.setProgressTextVisibility(NumberProgressBar.ProgressTextVisibility.Invisible);
         }
         addView(mProgressBar);
