@@ -29,4 +29,5 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.2.0'
     testCompile 'junit:junit:4.12'
     compile 'com.github.lzyzsd:jsbridge:1.0.4'
+    compile 'com.tamic:browse:1.0.0'
 }

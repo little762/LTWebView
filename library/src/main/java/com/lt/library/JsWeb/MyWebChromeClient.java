@@ -5,16 +5,18 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.widget.ProgressBar;
 
+import com.tamic.jswebview.view.NumberProgressBar;
+
 /**
  * Created by Little on 2017/6/1.
  */
 
 public class MyWebChromeClient extends WebChromeClient {
 
-    private ProgressBar mProgressBar;
+    private NumberProgressBar mProgressBar;
     private final static int DEF = 95;
 
-    public MyWebChromeClient(ProgressBar mProgressBar) {
+    public MyWebChromeClient(NumberProgressBar mProgressBar) {
         this.mProgressBar = mProgressBar;
     }
 

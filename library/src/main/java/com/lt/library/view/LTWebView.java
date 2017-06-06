@@ -4,14 +4,12 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.CookieManager;
 import android.webkit.WebSettings;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 
 import com.github.lzyzsd.jsbridge.BridgeHandler;
 import com.github.lzyzsd.jsbridge.BridgeWebView;
@@ -20,6 +18,7 @@ import com.lt.library.JsWeb.JavaCallHandler;
 import com.lt.library.JsWeb.JsHandler;
 import com.lt.library.JsWeb.MyWebChromeClient;
 import com.lt.library.JsWeb.MyWebViewClient;
+import com.tamic.jswebview.view.NumberProgressBar;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -31,7 +30,7 @@ import java.util.Map;
 public class LTWebView extends LinearLayout {
 
     private BridgeWebView mWebView;
-    private ProgressBar mProgressBar;
+    private NumberProgressBar mProgressBar;
 
     public LTWebView(Context context) {
         super(context);
@@ -59,7 +58,8 @@ public class LTWebView extends LinearLayout {
 
         // 初始化mProgressBar
         if (mProgressBar == null){
-            mProgressBar = new ProgressBar(context,null, android.R.attr.progressBarStyleHorizontal);
+            mProgressBar = new NumberProgressBar(context,attrs);
+            mProgressBar.setProgressTextVisibility(NumberProgressBar.ProgressTextVisibility.Invisible);
         }
         addView(mProgressBar);
 
@@ -100,6 +100,10 @@ public class LTWebView extends LinearLayout {
         });
 
         addView(mWebView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+    }
+
+    public NumberProgressBar getProgressBar() {
+        return mProgressBar;
     }
 
     public BridgeWebView getWebView() {
